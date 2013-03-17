@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:paddingLeft="16dp"
+	    android:paddingRight="16dp"
+	    android:orientation="vertical" >
+	    <ImageView
+	        android:id="@+id/imageView1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="27dp"
+	        android:layout_marginBottom="27dp"
+	        android:src="@drawable/logo_main225x52" />
+	    <TextView 
+	        android:text="Android native app with MercadoPago Web Mobile Checkout Sample!"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+			android:layout_marginBottom="15dp"       
+	        android:layout_gravity="center" />
+	    <Button
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="right"
+	        android:text="Pay!" 
+	        android:onClick="payCheckout"/>
+	    <TextView 
+	        android:id="@+id/resultText"	        
+	        android:text=""
+	        android:textSize="18dp"
+	        android:textStyle="bold"
+	        android:textColor="#0000ff"        	        
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+			android:layout_marginBottom="15dp"       
+	        android:layout_gravity="center" />	    
+   	</LinearLayout>
+
+</RelativeLayout>

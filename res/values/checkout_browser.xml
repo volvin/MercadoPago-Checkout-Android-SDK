@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="title_activity_checkout_browser">Pay with MercadoPago</string>
+    <string name="progressBar_message_checkout_browser">Please wait &#8230;</string>
+    
+</resources>
