@@ -9,7 +9,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.widget.FrameLayout;
 
 public class CheckoutBrowserActivity extends Activity implements CheckoutWebViewClient.CheckoutResponseListener {
 
@@ -18,7 +17,7 @@ public class CheckoutBrowserActivity extends Activity implements CheckoutWebView
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_checkout_browser);
+		setContentView(R.layout.activity_checkout_browser);		
 		start();
 	}
 
@@ -92,13 +91,19 @@ public class CheckoutBrowserActivity extends Activity implements CheckoutWebView
 		progressDialog.setMessage(getString(R.string.progressBar_message_checkout_browser));
 		progressDialog.setCancelable(false);
 		mWebView.setWebChromeClient(new WebChromeClient() { 
-		     public void onProgressChanged(WebView view, int progress) { 
-		         progressDialog.show();
-		         progressDialog.setProgress(0);
-		         activity.setProgress(progress * 1000);
-		         progressDialog.incrementProgressBy(progress);
-		         if(progress == 100 && progressDialog.isShowing())
-		             progressDialog.dismiss();		    	 
+		     public void onProgressChanged(WebView view, int progress) {
+		    	 try {
+			         progressDialog.show();
+			         progressDialog.setProgress(0);
+			         activity.setProgress(progress * 1000);
+			         progressDialog.incrementProgressBy(progress);
+			         if(progress == 100 && progressDialog.isShowing()) {
+			             progressDialog.dismiss();
+			         }		    		 
+		    	 }
+		    	 catch (Exception ex) {
+		    		 // do nothing
+		    	 }
 		     } 
 		});		
 
