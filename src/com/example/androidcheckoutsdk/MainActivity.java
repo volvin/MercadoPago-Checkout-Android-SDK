@@ -1,5 +1,7 @@
 package com.example.androidcheckoutsdk;
 
+import com.mercadopago.checkout.android.CheckoutBrowserActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
