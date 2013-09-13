@@ -44,10 +44,9 @@ public class CheckoutBrowserActivity extends Activity implements CheckoutWebView
 		                }
 		                else {
 		                	// Close the Web View with canceled by user
-		            		Intent returnIntent = new Intent();
-		            		setResult(RESULT_CANCELED, returnIntent);     
-		            		returnIntent.putExtra("reason", "canceled_by_user");
-		                    this.finish();
+		            		Bundle params = new Bundle();
+		            		params.putString("reason", CheckoutBrowserResults.CANCELED_BY_USER);
+		            		onFailure(params);
 		                }
 		                return true;
 	            	}
@@ -127,7 +126,7 @@ public class CheckoutBrowserActivity extends Activity implements CheckoutWebView
 		// Close the Web View with failure
 		Intent returnIntent = new Intent();
 		setResult(RESULT_CANCELED, returnIntent);     
-		returnIntent.putExtra("reason", "failure");
+		returnIntent.putExtra("result", params);
         this.finish();
 	}	
 }

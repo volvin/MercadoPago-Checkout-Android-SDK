@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	<LinearLayout 
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:paddingLeft="16dp"
@@ -16,7 +16,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="27dp"
 	        android:layout_marginBottom="27dp"
-	        android:src="@drawable/logo_main225x52" />
+	        android:src="@drawable/isologo" />
 	    <TextView 
 	        android:text="Android native app with MercadoPago Web Mobile Checkout Sample!"
 	        android:layout_width="wrap_content"
@@ -27,8 +27,14 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="right"
-	        android:text="Pay!" 
-	        android:onClick="payCheckout"/>
+	        android:text="Pay! (use existing)" 
+	        android:onClick="payExistingCheckout"/>
+	    <Button
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="right"
+	        android:text="Pay! (create new)" 
+	        android:onClick="payNewCheckout"/>	    
 	    <TextView 
 	        android:id="@+id/resultText"	        
 	        android:text=""

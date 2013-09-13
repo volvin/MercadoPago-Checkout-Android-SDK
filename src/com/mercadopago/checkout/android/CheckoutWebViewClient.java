@@ -19,7 +19,16 @@ public class CheckoutWebViewClient extends WebViewClient {
 
 	@Override
 	public void onReceivedError(WebView webView, int paramInt, String paramString1, String paramString2) {
-		super.onReceivedError(webView, paramInt, paramString1, paramString2);
+		
+		// Return a browser failure
+		Bundle params = new Bundle();
+		params.putString("reason", CheckoutBrowserResults.BROWSER_FAILURE);
+		params.putString("detail_1", paramString1);
+		params.putString("detail_2", paramString2);
+		this.mListener.onFailure(params);
+		
+		// Avoid super call
+		// super.onReceivedError(webView, paramInt, paramString1, paramString2);
 	}
 
 	@Override
@@ -30,6 +39,7 @@ public class CheckoutWebViewClient extends WebViewClient {
 		// Check if equals success url
 		String aux1 = url.substring(0, mSuccessUrl.length());
 		if (aux1.equals(mSuccessUrl)) {
+			// Return success
 			this.mListener.onSuccess(null);
 			overrideUrlLoading = Boolean.TRUE;
 		}
@@ -37,7 +47,10 @@ public class CheckoutWebViewClient extends WebViewClient {
 		// Check if equals failure url
 		aux1 = url.substring(0, mFailureUrl.length());
 		if (aux1.equals(mFailureUrl)) {
-			this.mListener.onFailure(null);
+			// Return a checkout failure
+			Bundle params = new Bundle();
+			params.putString("reason", CheckoutBrowserResults.CHECKOUT_FAILURE);			
+			this.mListener.onFailure(params);
 			overrideUrlLoading = Boolean.TRUE;
 		}
 		
