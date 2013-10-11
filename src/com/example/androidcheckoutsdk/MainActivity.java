@@ -63,8 +63,8 @@ public class MainActivity extends Activity {
      */        
     private void navigateFixedCheckoutSample() {
 
-    	String checkout_init_point_url = "https://www.mercadopago.com/mla/checkout/pay?pref_id=85958951-5d0b1625-0788-471d-9d10-3490dfdd2314";
-    	String success_url = "https://www.success.com";
+    	String checkout_init_point_url = "https://sandbox.mercadopago.com/mla/checkout/pay?pref_id=109458301-12ba128d-7dd5-411f-a721-282e24c5b442";
+    	String success_url = "https://bac.cmd.com.ar/backend_web/pago/pagoRespuesta.htm";
     	String failure_url = "https://www.failure.com";
     	
     	// Navigate checkout
@@ -171,7 +171,21 @@ public class MainActivity extends Activity {
     	    	 /*
     	    	  * Replace with your code: Success
     	    	  */
-    	    	 resultText.setText("Listo!!");          
+    	    	 Bundle result = data.getExtras().getBundle("result");
+	    		 String parameters = "Params: ";
+    	    	 if (result != null) {
+    	    		 
+    	    		 try {
+    	    			 parameters += "Collection Id (" + result.getString("collection_id") + ");";
+    	    			 parameters += "Collection Status (" + result.getString("collection_status") + ");";
+    	    			 parameters += "External Reference (" + result.getString("external_reference") + ");";
+    	    			 parameters += "Preference Id (" + result.getString("preference_id") + ");";
+    	    		 }
+    	    		 catch (Exception ex) {
+    	    			 // do nothing
+    	    		 }
+    	    	 }
+    	    	 resultText.setText("Listo!! " + parameters);          
     	     }
     	     if (resultCode == RESULT_CANCELED) {
     	    	 /*

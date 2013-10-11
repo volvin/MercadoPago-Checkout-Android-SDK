@@ -118,6 +118,7 @@ public class CheckoutBrowserActivity extends Activity implements CheckoutWebView
 		// Close the Web View with success
 		Intent returnIntent = new Intent();
 		setResult(RESULT_OK, returnIntent);     
+		returnIntent.putExtra("result", params);		
 		this.finish();
 	}
 

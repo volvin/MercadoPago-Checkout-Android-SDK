@@ -1,6 +1,7 @@
 package com.mercadopago.checkout.android;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -39,8 +40,21 @@ public class CheckoutWebViewClient extends WebViewClient {
 		// Check if equals success url
 		String aux1 = url.substring(0, mSuccessUrl.length());
 		if (aux1.equals(mSuccessUrl)) {
-			// Return success
-			this.mListener.onSuccess(null);
+			
+			// Return success with params
+			Bundle params = new Bundle();
+			try {
+				Uri uri = Uri.parse(url);
+				params.putString("collection_id", uri.getQueryParameter("collection_id"));				
+				params.putString("collection_status", uri.getQueryParameter("collection_status"));				
+				params.putString("external_reference", uri.getQueryParameter("external_reference"));				
+				params.putString("preference_id", uri.getQueryParameter("preference_id"));				
+			}
+			catch (Exception ex) {
+				// do nothing
+			}
+			
+			this.mListener.onSuccess(params);
 			overrideUrlLoading = Boolean.TRUE;
 		}
 
